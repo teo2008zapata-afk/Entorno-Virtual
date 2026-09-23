@@ -1,13 +1,13 @@
 from django.shortcuts import render
-from .models import contacto
+from .models import Contacto
 
 def crear(request):
     if request.method == 'POST':
-        contacto = contacto(
-        nombre = request.POST.get('nombre')
-        correo = request.POST.get('correo')
-        telefono = request.POST.get('telefono')
-        mensaje = request.POST.get('mensaje')
-    )
+        contacto = Contacto(
+            nombre = request.POST["nombre"],
+            correo = request.POST["correo"],
+            telefono = request.POST["telefono"],
+            mensaje = request.POST["mensaje"]
+        )
         contacto.save()
-        return render(request, 'contactos/formulario.html')
+    return render(request, "formulario.html")
